@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Blessings Tarot</title>
+    <style>
+        body {
+            background-color: #0d0221; /* Dark mystical purple */
+            background: linear-gradient(135deg, #0d0221 0%, #24173e 100%);
+            color: #f1d279; /* Soft Gold */
+            font-family: 'Garamond', serif;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .altar {
+            border: 3px double #f1d279;
+            padding: 40px;
+            max-width: 500px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50px 50px 0 0;
+            box-shadow: 0 0 40px rgba(241, 210, 121, 0.1);
+        }
+        h1 { font-size: 2.2rem; letter-spacing: 4px; text-transform: uppercase; }
+        .card-box { margin: 30px 0; min-height: 120px; }
+        #card-name { font-size: 1.8rem; color: #fff; text-shadow: 0 0 10px #f1d279; }
+        #card-desc { font-style: italic; font-size: 1.2rem; color: #d1b8ff; }
+        button {
+            background: #f1d279;
+            color: #0d0221;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover { background: #fff; box-shadow: 0 0 20px #f1d279; }
+    </style>
+</head>
+<body>
+
+    <div class="altar">
+        <p>✨ 🕯️ 🔮 🕯️ ✨</p>
+        <h1>Divine Blessings</h1>
+        <p>Seek the wisdom of the cards...</p>
+
+        <div class="card-box">
+            <h2 id="card-name">The Deck is Ready</h2>
+            <p id="card-desc">Click below to draw your divine guidance.</p>
+        </div>
+
+        <button onclick="draw()">Draw a Card</button>
+    </div>
+
+    <script>
+        const tarot = [
+            { name: "The Sun", desc: "Abundance, success, and radiant joy are coming your way." },
+            { name: "The Moon", desc: "Trust your intuition. Not everything is as it seems." },
+            { name: "The Star", desc: "Hope is restored. The universe is guiding you toward healing." },
+            { name: "The Magician", desc: "You have all the tools you need to manifest your desires." },
+            { name: "The High Priestess", desc: "Look inward. The answers you seek are in your silence." }
+        ];
+
+        function draw() {
+            const pick = tarot[Math.floor(Math.random() * tarot.length)];
+            document.getElementById('card-name').innerText = pick.name;
+            document.getElementById('card-desc').innerText = pick.desc;
+        }
+    </script>
+</body>
+</html>
