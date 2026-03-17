@@ -3,80 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divine Blessings - 5 Card Reading</title>
+    <title>Divine Blessings | Full 78-Card Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
     <style>
+        :root { --gold: #d4af37; --deep-purple: #1a0b2e; --text-light: #f4e7d3; }
         body {
-            background: linear-gradient(135deg, #0d0221 0%, #1a1a2e 100%);
-            color: #f1d279;
-            font-family: 'Georgia', serif;
-            text-align: center;
-            padding: 20px;
-            margin: 0;
+            background: radial-gradient(circle at center, #2e1a47 0%, #0d0221 100%);
+            color: var(--text-light); font-family: 'Lora', serif; text-align: center;
+            margin: 0; padding: 20px; min-height: 100vh; overflow-x: hidden;
         }
-        .altar { max-width: 1000px; margin: auto; padding: 20px; }
-        .spread { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
-        .card-slot {
-            width: 160px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid #f1d279;
-            border-radius: 10px;
-            padding: 10px;
-            min-height: 400px;
+        body::after {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.3; pointer-events: none; z-index: -1;
         }
-        .card-slot img { width: 100%; border-radius: 5px; display: none; margin-bottom: 10px; border: 1px solid #f1d279; }
-        .slot-title { font-size: 0.8rem; text-transform: uppercase; color: #fff; margin-bottom: 10px; border-bottom: 1px solid #f1d279; padding-bottom: 5px; }
-        .card-name { font-size: 1.1rem; margin: 5px 0; font-weight: bold; color: #fff; }
-        .card-desc { font-size: 0.85rem; color: #d1b8ff; line-height: 1.4; }
-        button {
-            background: #f1d279; color: #0d0221; border: none; padding: 18px 45px;
-            font-size: 1.3rem; font-weight: bold; cursor: pointer; border-radius: 50px; margin: 30px 0;
-        }
-        button:hover { background: #fff; transform: scale(1.05); }
-    </style>
-</head>
-<body>
-
-    <div class="altar">
-        <h1>Divine Blessings</h1>
-        <p>The 5-Card Spirit Spread</p>
-        <button onclick="drawFive()">Reveal Your Destiny</button>
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 8vw, 3.5rem); letter-spacing: 5px; color: var(--gold); margin-bottom: 5px; }
+        .subtitle { font-style: italic; opacity: 0.8; margin-bottom: 30px; }
         
-        <div class="spread">
-            <div class="card-slot" id="slot-0"><div class="slot-title">Present</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
-            <div class="card-slot" id="slot-1"><div class="slot-title">Obstacle</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
-            <div class="card-slot" id="slot-2"><div class="slot-title">Past</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
-            <div class="card-slot" id="slot-3"><div class="slot-title">Future</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
-            <div class="card-slot" id="slot-4"><div class="slot-title">Outcome</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
-        </div>
-    </div>
-
-    <script>
-        const deck = [
-            { name: "The Fool", desc: "New beginnings, innocence, and spontaneity.", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg" },
-            { name: "The Magician", desc: "Manifestation, resourcefulness, and power.", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg" },
-            { name: "The High Priestess", desc: "Intuition and sacred knowledge.", img: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg" },
-            { name: "The Empress", desc: "Abundance, nature, and femininity.", img: "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg" },
-            { name: "The Emperor", desc: "Authority, structure, and solid foundations.", img: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg" },
-            { name: "The Lovers", desc: "Love, harmony, and choices.", img: "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg" },
-            { name: "Death", desc: "Endings and transformation.", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg" },
-            { name: "The Star", desc: "Hope and renewal.", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg" },
-            { name: "The Sun", desc: "Success and joy.", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg" },
-            { name: "The World", desc: "Completion and accomplishment.", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg" }
-        ];
-
-        function drawFive() {
-            let tempDeck = [...deck];
-            for (let i = 0; i < 5; i++) {
-                const randomIndex = Math.floor(Math.random() * tempDeck.length);
-                const card = tempDeck.splice(randomIndex, 1)[0];
-                const slot = document.getElementById(`slot-${i}`);
-                const img = slot.querySelector('img');
-                img.src = card.img;
-                img.style.display = "block";
-                slot.querySelector('.card-name').innerText = card.name;
-                slot.querySelector('.card-desc').innerText = card.desc;
-            }
+        /* Mobile Polish: The Spread Grid */
+        .spread {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px; max-width: 1200px; margin: 0 auto; padding: 10px;
         }
-    </script>
-</body>
-</html>
+
+        .card-slot {
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(5px);
+            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px;
+            padding: 15px; transition: 0.6s; opacity: 0.7;
+        }
+        .card-slot.active { opacity: 1; border-color: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.2); }
+        .slot-title { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--gold); border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 8px; margin-bottom: 12px; }
+        .card-slot img { width: 100%; border-radius: 8px; display: none; border: 1px solid var(--gold); animation: fadeIn 1s forwards; }
+        .card-name { font-family: 'Cinzel', serif; font-size: 1rem; margin: 12px 0 5px; color: #fff; }
+        .card-desc { font-size: 0.8rem; line-height: 1.4; color: #d1b8ff; }
+
+        /*
+    
