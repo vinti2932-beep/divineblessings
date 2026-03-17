@@ -3,80 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divine Blessings | Full 78-Card Journey</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <title>Divine Blessings | Spiritual Guidance & Tarot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --deep-purple: #1a0b2e; --text-light: #f4e7d3; }
+        :root {
+            --baby-pink: #FFF0F5; /* Lavender Blush */
+            --accent-pink: #FF8E9E; /* Soft Rose */
+            --deep-pink: #D81B60; /* Professional Deep Pink */
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text: #333333;
+        }
+
         body {
-            background: radial-gradient(circle at center, #2e1a47 0%, #0d0221 100%);
-            color: var(--text-light); font-family: 'Lora', serif; text-align: center;
-            margin: 0; padding: 20px; min-height: 100vh; overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            margin: 0; padding: 0;
+            background-color: var(--white);
+            color: var(--text);
+            scroll-behavior: smooth;
         }
-        body::after {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
-            opacity: 0.3; pointer-events: none; z-index: -1;
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--deep-pink);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
-        h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 8vw, 3.5rem); letter-spacing: 5px; color: var(--gold); margin-bottom: 5px; }
-        .subtitle { font-style: italic; opacity: 0.8; margin-bottom: 30px; }
-        
-        /* Mobile Polish: The Spread Grid */
+
+        header {
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--deep-pink);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, var(--baby-pink) 0%, #ffffff 100%);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: var(--deep-pink);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 35px;
+            color: #666;
+        }
+
+        /* Conversion Buttons */
+        .cta-btn {
+            background-color: var(--accent-pink);
+            color: white;
+            border: none;
+            padding: 16px 45px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 6px 20px rgba(255, 142, 158, 0.4);
+            transition: 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--deep-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.3);
+        }
+
+        /* Oracle Section */
+        .oracle-container {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
         .spread {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px; max-width: 1200px; margin: 0 auto; padding: 10px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 50px;
         }
 
         .card-slot {
-            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(5px);
-            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px;
-            padding: 15px; transition: 0.6s; opacity: 0.7;
+            flex: 1;
+            min-width: 200px;
+            max-width: 220px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: 0.4s;
         }
-        .card-slot.active { opacity: 1; border-color: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.2); }
-        .slot-title { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--gold); border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 8px; margin-bottom: 12px; }
-        .card-slot img { width: 100%; border-radius: 8px; display: none; border: 1px solid var(--gold); animation: fadeIn 1s forwards; }
-        .card-name { font-family: 'Cinzel', serif; font-size: 1rem; margin: 12px 0 5px; color: #fff; }
-        .card-desc { font-size: 0.8rem; line-height: 1.4; color: #d1b8ff; }
 
-        /* Buttons */
-        .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 40px 0; }
-        button {
-            background: transparent; color: var(--gold); border: 2px solid var(--gold);
-            padding: 12px 30px; font-family: 'Cinzel', serif; cursor: pointer;
-            letter-spacing: 2px; transition: 0.4s; text-transform: uppercase;
+        .card-slot.revealed {
+            border-color: var(--accent-pink);
+            box-shadow: 0 10px 25px rgba(255, 142, 158, 0.15);
         }
-        button:hover { background: var(--gold); color: var(--deep-purple); box-shadow: 0 0 20px var(--gold); }
-        .btn-full-reading { background: var(--gold); color: var(--deep-purple); }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        
-        /* Mobile Specific Adjustment */
-        @media (max-width: 600px) {
-            .spread { grid-template-columns: 1fr; }
-            .card-slot { max-width: 300px; margin: 0 auto; }
+
+        .slot-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-pink);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .card-slot img {
+            width: 100%;
+            border-radius: 8px;
+            display: none;
+            margin-bottom: 15px;
+            border: 1px solid #f9f9f9;
+        }
+
+        .card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--deep-pink);
+            margin: 10px 0;
+        }
+
+        .card-desc {
+            font-size: 0.8rem;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        /* Stats Section */
+        .stats-bar {
+            background: var(--light-gray);
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item b { font-size: 1.5rem; color: var(--deep-pink); display: block; }
+        .stat-item span { font-size: 0.8rem; color: #888; text-transform: uppercase; }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 5%;
+            background: var(--baby-pink);
+            text-align: center;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .test-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 50px 5%;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes revealCard {
+            from { opacity: 0; transform: translateY(20px) rotateY(90deg); }
+            to { opacity: 1; transform: translateY(0) rotateY(0deg); }
+        }
+
+        /* Mobile Polish */
+        @media (max-width: 768px) {
+            .spread { flex-direction: column; align-items: center; }
+            .card-slot { width: 90%; max-width: 300px; }
+            .hero { padding: 60px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="altar">
-        <h1>Divine Blessings</h1>
-        <p class="subtitle">A full 78-card sanctuary for seekers of truth.</p>
-        
-        <div class="btn-group">
-            <button onclick="drawFive()">Consult Oracle</button>
-            <button onclick="shareReading()">Share Results</button>
-            <button class="btn-full-reading" onclick="window.location.href='mailto:your-email@example.com?subject=Full Tarot Reading Inquiry'">Request Full Reading</button>
-        </div>
+    <div class="top-bar">LIMITED TIME: 50% OFF PRIVATE READINGS</div>
+
+    <header>
+        <a href="#" class="logo">Divine Blessings</a>
+        <button class="cta-btn" style="padding: 10px 25px; font-size: 0.8rem;" onclick="window.location.href='mailto:your-email@example.com'">Join Now</button>
+    </header>
+
+    <section class="hero">
+        <h1>Find the Answers <br>you're looking for!</h1>
+        <p>Expert guidance and spiritual clarity. Experience the magic of a personalized reading with total peace of mind.</p>
+        <button class="cta-btn" onclick="document.getElementById('oracle').scrollIntoView()">Start Your Journey</button>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stat-item"><b>500,000+</b><span>Users</span></div>
+        <div class="stat-item"><b>2 Million+</b><span>Readings</span></div>
+        <div class="stat-item"><b>2,000+</b><span>Experts</span></div>
+    </div>
+
+    <section class="oracle-container" id="oracle">
+        <h2 style="font-family:'Playfair Display'; font-size: 2.2rem; color: var(--deep-pink);">Free 5-Card Spirit Spread</h2>
+        <p>Focus on your path. The universe is listening.</p>
         
         <div class="spread">
-            <div class="card-slot" id="slot-0"><div class="slot-title">Present</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
-            <div class="card-slot" id="slot-1"><div class="slot-title">Obstacle</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
-            <div class="card-slot" id="slot-2"><div class="slot-title">Past</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
-            <div class="card-slot" id="slot-3"><div class="slot-title">Future</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
-            <div class="card-slot" id="slot-4"><div class="slot-title">Outcome</div><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
+            <div class="card-slot" id="slot-0"><span class="slot-tag">Present</span><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
+            <div class="card-slot" id="slot-1"><span class="slot-tag">Obstacle</span><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
+            <div class="card-slot" id="slot-2"><span class="slot-tag">Past</span><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
+            <div class="card-slot" id="slot-3"><span class="slot-tag">Future</span><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
+            <div class="card-slot" id="slot-4"><span class="slot-tag">Outcome</span><img src=""><div class="card-name"></div><div class="card-desc"></div></div>
         </div>
-    </div>
+
+        <div style="margin-top: 50px;">
+            <button class="cta-btn" onclick="drawFive()">Reveal My Destiny</button>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 style="font-family:'Playfair Display';">People love our guidance</h2>
+        <div class="test-grid">
+            <div class="test-card">
+                <p>"Excellent website and amazing psychics! Scarily accurate predictions."</p>
+                <b>- Anna L.</b>
+            </div>
+            <div class="test-card">
+                <p>"I left the session with a clear mind and feeling very peaceful."</p>
+                <b>- Barry B.</b>
+            </div>
+            <div class="test-card">
+                <p>"The best tool for a quick daily check-in. Highly recommended."</p>
+                <b>- Jade T.</b>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Divine Blessings Sanctuary</p>
+        <div style="margin-top:20px; font-size:0.8rem; opacity:0.6;">
+            Terms & Conditions | Privacy Policy | Refund Policy
+        </div>
+    </footer>
 
     <script>
         const deck = [
@@ -88,60 +289,31 @@
             { name: "The Emperor", desc: "Authority, structure, solid foundation.", img: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg" },
             { name: "The Lovers", desc: "Love, harmony, choices.", img: "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg" },
             { name: "The Chariot", desc: "Control, willpower, success.", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg" },
-            { name: "Strength", desc: "Courage, persuasion, inner strength.", img: "https://upload.wikimedia.org/wikipedia/commons/f/f2/RWS_Tarot_08_Strength.jpg" },
-            { name: "Wheel of Fortune", desc: "Good luck, karma, life cycles.", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg" },
-            { name: "The Star", desc: "Hope, faith, rejuvenation.", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg" },
+            { name: "Death", desc: "Endings, change, transformation.", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg" },
             { name: "The Sun", desc: "Positivity, warmth, success.", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg" },
-            { name: "The World", desc: "Completion, integration, travel.", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg" },
-            
-            // WANDS
-            { name: "Ace of Wands", desc: "Inspiration, new opportunities.", img: "https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg" },
-            { name: "Ten of Wands", desc: "Burden, extra responsibility.", img: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Wands10.jpg" },
-            { name: "Knight of Wands", desc: "Energy, passion, adventure.", img: "https://upload.wikimedia.org/wikipedia/commons/1/16/Wands12.jpg" },
-            
-            // CUPS
-            { name: "Ace of Cups", desc: "New feelings, intuition, love.", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg" },
-            { name: "Three of Cups", desc: "Celebration, friendship.", img: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Cups03.jpg" },
-            { name: "Queen of Cups", desc: "Compassion, calm, comfort.", img: "https://upload.wikimedia.org/wikipedia/commons/6/62/Cups13.jpg" },
-            
-            // SWORDS
-            { name: "Ace of Swords", desc: "Mental clarity, breakthrough.", img: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg" },
-            { name: "Six of Swords", desc: "Transition, leaving behind.", img: "https://upload.wikimedia.org/wikipedia/commons/2/29/Swords06.jpg" },
-            { name: "King of Swords", desc: "Mental clarity, authority.", img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Swords14.jpg" },
-            
-            // PENTACLES
-            { name: "Ace of Pentacles", desc: "Financial opportunity, manifestation.", img: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Pents01.jpg" },
-            { name: "Eight of Pentacles", desc: "Apprenticeship, mastery, skill.", img: "https://upload.wikimedia.org/wikipedia/commons/4/49/Pents08.jpg" },
-            { name: "King of Pentacles", desc: "Wealth, business, abundance.", img: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Pents14.jpg" }
-            // Note: In a production site, you'd add all 78 entries here.
+            { name: "The World", desc: "Completion, integration, accomplishment.", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg" }
+            // ADD MORE CARDS HERE
         ];
-
-        let lastResult = "";
 
         function drawFive() {
             let tempDeck = [...deck];
-            lastResult = "My Divine Reading: \n";
             for (let i = 0; i < 5; i++) {
                 const randomIndex = Math.floor(Math.random() * tempDeck.length);
                 const card = tempDeck.splice(randomIndex, 1)[0];
                 const slot = document.getElementById(`slot-${i}`);
                 const img = slot.querySelector('img');
                 
+                // Clear and show
+                img.style.display = "none";
                 setTimeout(() => {
                     img.src = card.img;
                     img.style.display = "block";
-                    slot.classList.add('active');
+                    img.style.animation = "revealCard 0.8s forwards";
+                    slot.classList.add('revealed');
                     slot.querySelector('.card-name').innerText = card.name;
                     slot.querySelector('.card-desc').innerText = card.desc;
-                }, i * 200);
-                lastResult += `- ${card.name}\n`;
+                }, i * 250);
             }
-        }
-
-        function shareReading() {
-            if (!lastResult) return alert("Consult the Oracle first!");
-            navigator.clipboard.writeText(lastResult + "\nGet your reading at: " + window.location.href);
-            alert("Reading copied to clipboard! Share it with a friend.");
         }
     </script>
 </body>
