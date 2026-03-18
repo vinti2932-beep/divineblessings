@@ -3,66 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divine Blessings | Spiritual Sanctuary</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Divine Blessings | Singapore</title>
     <style>
-        :root { --primary-gold: #c5a059; --soft-cream: #fdfaf5; --deep-teal: #1a3a3a; --text-gray: #4a4a4a; --white: #ffffff; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background-color: var(--soft-cream); color: var(--text-gray); line-height: 1.6; }
+        body { font-family: 'Georgia', serif; margin: 0; padding: 0; background-color: #fdfaf5; color: #1a3a3a; text-align: center; }
+        header { background: #1a3a3a; color: #c5a059; padding: 40px 20px; border-bottom: 5px solid #c5a059; }
+        .logo { font-size: 32px; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; }
         
-        header { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: var(--white); border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; letter-spacing: 2px; color: var(--deep-teal); text-transform: uppercase; font-weight: 700; text-decoration: none; }
-
-        .hero { padding: 80px 10%; text-align: center; background: #fff; border-bottom: 1px solid #f0e6d2; }
-        .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--deep-teal); margin-bottom: 15px; }
-
-        .cta-btn { background: var(--primary-gold); color: white; border: none; padding: 15px 35px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.4s; font-weight: 600; border-radius: 2px; }
-        .cta-btn:hover { background: var(--deep-teal); }
-
-        .services-section { padding: 60px 5%; text-align: center; background: #fff; }
-        .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px; }
-        .service-card { background: var(--soft-cream); padding: 30px; border: 1px solid #f0e6d2; width: 100%; max-width: 350px; border-radius: 8px; }
-        .service-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 15px; }
-
-        #booking-section { padding: 60px 5%; background: #fff; border-top: 2px solid var(--primary-gold); }
-        .booking-container { max-width: 600px; margin: 0 auto; background: var(--soft-cream); padding: 40px; border-radius: 12px; border: 1px solid #eee; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
         
-        .payment-info { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 25px; text-align: center; border: 1px solid var(--primary-gold); }
-        .paynow-number { font-size: 1.8rem; font-weight: 700; color: var(--deep-teal); letter-spacing: 1px; }
-
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--primary-gold); margin-bottom: 5px; text-transform: uppercase; }
-        input, textarea, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Montserrat'; }
-
-        .oracle-section { padding: 80px 5%; text-align: center; background: var(--soft-cream); }
-        .card-display { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 30px 0; min-height: 250px; }
-        .card-box { width: 140px; padding: 10px; background: #fff; border: 1px solid #eee; border-radius: 5px; }
-        .card-box img { width: 100%; display: none; margin-bottom: 10px; }
+        /* Service Cards */
+        .card { background: white; border: 2px solid #c5a059; margin: 20px 0; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .icon { font-size: 50px; color: #c5a059; margin-bottom: 10px; }
+        .price { font-size: 28px; font-weight: bold; color: #1a3a3a; margin: 10px 0; }
         
-        footer { padding: 40px; text-align: center; background: var(--deep-teal); color: white; font-size: 0.8rem; }
+        /* Payment Area */
+        .paynow-section { background: #fff1f1; border: 2px dashed #7b1113; padding: 20px; border-radius: 10px; margin: 30px 0; }
+        .number { font-size: 32px; font-weight: bold; color: #7b1113; display: block; margin: 10px 0; }
+
+        /* Form */
+        form { background: white; padding: 30px; border-radius: 12px; text-align: left; border: 1px solid #ddd; }
+        label { font-weight: bold; display: block; margin-top: 15px; }
+        input, textarea, select { width: 100%; padding: 15px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+        
+        .submit-btn { background: #1a3a3a; color: #c5a059; padding: 20px; border: none; width: 100%; border-radius: 5px; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 20px; text-transform: uppercase; }
+        .submit-btn:hover { background: #c5a059; color: #1a3a3a; }
+
+        footer { padding: 40px; color: #888; font-size: 14px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">Divine Blessings</div>
+        <div style="margin-top:10px; opacity: 0.8;">Intuitive Tarot & Guidance</div>
     </header>
 
-    <section class="hero">
-        <h1>Your Spiritual Journey Starts Here</h1>
-        <p style="color: var(--primary-gold); letter-spacing: 2px;">INTUITIVE READINGS & ANCESTRAL WISDOM</p>
-        <br>
-        <button class="cta-btn" onclick="location.href='#services'">View Readings</button>
-    </section>
+    <div class="container">
+        
+        <h2>Step 1: Choose Your Reading</h2>
 
-    <section class="services-section" id="services">
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1572916138174-0f2f0120529e?w=500" alt="Mini">
-                <h3 style="font-family: 'Cormorant Garamond'; font-size: 1.8rem;">Quick Mini Reading</h3>
-                <p style="color: var(--primary-gold); font-weight: bold;">SGD 18</p>
-                <p style="font-size: 0.8rem;">A focused insight into one specific question.</p>
-                <button class="cta-btn" onclick="selectService('Quick Mini Reading (SGD 18)')">Select This</button>
-            </div>
-            <div class="service-card">
-                <img src="
+        <div class="card">
+            <div class="icon">🔮</div>
+            <h3>Quick Mini Reading</h3>
+            <p>1-2 cards for immediate clarity on one question.</p>
+            <div class="price">SGD 18</div>
+        </div>
+
+        <div class="card">
+            <div class="icon">✨</div>
+            <h3>Personalized Deep Dive</h3>
+            <p>Full spread analysis of your path and energy.</p>
+            <div class="price">SGD 40</div>
+        </div>
+
+        <div class="paynow-section">
+            <strong style="color: #7b1113;">PAYNOW TRANSFER</strong>
+            <p>Please complete payment to secure your slot:</p>
+            <span class="number">82575721</span>
+            <p style="font-size: 12px;">Reference: Your Name</p>
+        </div>
+
+        <h2>Step 2: Submit Your Question</h2>
+        <form action="https://formsubmit.co/vinti2932@gmail.com" method="POST">
+            <label>Which reading did you pay for?</label>
+            <select name="ReadingChoice">
+                <option>Quick Mini Reading (SGD 18)</option>
+                <option>Personalized Deep Dive (SGD 40)</option>
+            </select>
+
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="As per PayNow" required>
+
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Where to send your reading" required>
+
+            <label>Your Question</label>
+            <textarea name="question" rows="5" placeholder="What are you seeking guidance on?" required></textarea>
+
+            <button type="submit" class="submit-btn">Send My Request</button>
+        </form>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Divine Blessings Singapore</p>
+        <p>Instagram: @divineblessings222</p>
+    </footer>
+
+</body>
+</html>
