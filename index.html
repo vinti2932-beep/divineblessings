@@ -5,90 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divine Blessings | Singapore</title>
     <style>
-        body { font-family: 'Georgia', serif; margin: 0; padding: 0; background-color: #fdfaf5; color: #1a3a3a; text-align: center; }
-        header { background: #1a3a3a; color: #c5a059; padding: 40px 20px; border-bottom: 5px solid #c5a059; }
-        .logo { font-size: 32px; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; }
+        :root { --gold: #c5a059; --teal: #1a3a3a; --cream: #fdfaf5; }
+        body { font-family: 'Georgia', serif; margin: 0; padding: 0; background-color: var(--cream); color: var(--teal); text-align: center; }
+        header { background: var(--teal); color: var(--gold); padding: 30px; border-bottom: 4px solid var(--gold); }
+        .logo { font-size: 28px; letter-spacing: 3px; text-transform: uppercase; font-weight: bold; }
         
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        
-        /* Service Cards */
-        .card { background: white; border: 2px solid #c5a059; margin: 20px 0; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .icon { font-size: 50px; color: #c5a059; margin-bottom: 10px; }
-        .price { font-size: 28px; font-weight: bold; color: #1a3a3a; margin: 10px 0; }
-        
-        /* Payment Area */
-        .paynow-section { background: #fff1f1; border: 2px dashed #7b1113; padding: 20px; border-radius: 10px; margin: 30px 0; }
-        .number { font-size: 32px; font-weight: bold; color: #7b1113; display: block; margin: 10px 0; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        h2 { font-style: italic; margin-top: 40px; border-bottom: 1px solid var(--gold); display: inline-block; }
 
-        /* Form */
-        form { background: white; padding: 30px; border-radius: 12px; text-align: left; border: 1px solid #ddd; }
-        label { font-weight: bold; display: block; margin-top: 15px; }
-        input, textarea, select { width: 100%; padding: 15px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
-        
-        .submit-btn { background: #1a3a3a; color: #c5a059; padding: 20px; border: none; width: 100%; border-radius: 5px; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 20px; text-transform: uppercase; }
-        .submit-btn:hover { background: #c5a059; color: #1a3a3a; }
+        /* FREE READING SECTION */
+        .oracle-box { background: white; padding: 30px; border-radius: 15px; border: 1px solid #ddd; margin: 20px 0; }
+        .spread { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+        .card-slot { width: 130px; min-height: 220px; background: #eee; border-radius: 8px; padding: 5px; border: 1px solid #ccc; }
+        .card-slot img { width: 100%; display: none; border-radius: 5px; animation: fadeIn 0.8s; }
+        .card-name { font-size: 12px; font-weight: bold; margin-top: 5px; min-height: 15px; }
+        .pos-label { font-size: 10px; color: var(--gold); text-transform: uppercase; margin-bottom: 5px; }
 
-        footer { padding: 40px; color: #888; font-size: 14px; }
+        /* SERVICE CARDS */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card { background: white; border: 2px solid var(--gold); padding: 20px; border-radius: 12px; }
+        .price { font-size: 24px; font-weight: bold; color: var(--teal); }
+
+        /* FORM & PAYMENT */
+        .paynow-box { background: #fff1f1; border: 2px dashed #7b1113; padding: 20px; border-radius: 10px; margin: 30px 0; }
+        .number { font-size: 32px; font-weight: bold; color: #7b1113; }
+        form { background: white; padding: 30px; border-radius: 12px; text-align: left; border: 1px solid #ddd; margin-top: 20px; }
+        input, textarea, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        
+        .btn { background: var(--teal); color: var(--gold); padding: 15px 30px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 16px; margin-top: 10px; }
+        .btn:hover { background: var(--gold); color: var(--teal); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        footer { padding: 40px; color: #888; font-size: 12px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">Divine Blessings</div>
-        <div style="margin-top:10px; opacity: 0.8;">Intuitive Tarot & Guidance</div>
     </header>
 
     <div class="container">
         
-        <h2>Step 1: Choose Your Reading</h2>
+        <!-- FREE READING SECTION -->
+        <section id="free-reading">
+            <h2>Free Daily Guidance</h2>
+            <p>Focus on your question and draw 5 cards from the Great Arcana.</p>
+            <div class="oracle-box">
+                <div class="spread">
+                    <div class="card-slot" id="s0"><div class="pos-label">Present</div><img><div class="card-name"></div></div>
+                    <div class="card-slot" id="s1"><div class="pos-label">Obstacle</div><img><div class="card-name"></div></div>
+                    <div class="card-slot" id="s2"><div class="pos-label">Past</div><img><div class="card-name"></div></div>
+                    <div class="card-slot" id="s3"><div class="pos-label">Future</div><img><div class="card-name"></div></div>
+                    <div class="card-slot" id="s4"><div class="pos-label">Outcome</div><img><div class="card-name"></div></div>
+                </div>
+                <button class="btn" style="width: auto;" onclick="drawFive()">Draw My Cards</button>
+            </div>
+        </section>
 
-        <div class="card">
-            <div class="icon">🔮</div>
-            <h3>Quick Mini Reading</h3>
-            <p>1-2 cards for immediate clarity on one question.</p>
-            <div class="price">SGD 18</div>
+        <!-- PAID SERVICES -->
+        <h2>Private Professional Readings</h2>
+        <div class="services-grid">
+            <div class="card">
+                <h3>Quick Mini Reading</h3>
+                <p>Focused clarity on one specific question.</p>
+                <div class="price">SGD 18</div>
+                <p style="font-size: 12px;">Sent via Email within 24 hours.</p>
+            </div>
+            <div class="card">
+                <h3>Personalized Deep Dive</h3>
+                <p>Detailed exploration of your energy and path.</p>
+                <div class="price">SGD 40</div>
+                <p style="font-size: 12px;">Full PDF report + 5-7 cards.</p>
+            </div>
         </div>
 
-        <div class="card">
-            <div class="icon">✨</div>
-            <h3>Personalized Deep Dive</h3>
-            <p>Full spread analysis of your path and energy.</p>
-            <div class="price">SGD 40</div>
-        </div>
-
-        <div class="paynow-section">
-            <strong style="color: #7b1113;">PAYNOW TRANSFER</strong>
-            <p>Please complete payment to secure your slot:</p>
+        <!-- PAYMENT & BOOKING -->
+        <div class="paynow-box">
+            <strong style="color: #7b1113;">PAYNOW (SINGAPORE)</strong>
             <span class="number">82575721</span>
-            <p style="font-size: 12px;">Reference: Your Name</p>
+            <p style="font-size: 12px; margin: 5px 0;">Reference: [Your Name]</p>
         </div>
 
-        <h2>Step 2: Submit Your Question</h2>
         <form action="https://formsubmit.co/vinti2932@gmail.com" method="POST">
-            <label>Which reading did you pay for?</label>
-            <select name="ReadingChoice">
-                <option>Quick Mini Reading (SGD 18)</option>
-                <option>Personalized Deep Dive (SGD 40)</option>
+            <h3>Book Your Session</h3>
+            <label>I have paid for:</label>
+            <select name="Reading_Type">
+                <option>Quick Mini Reading ($18)</option>
+                <option>Personalized Deep Dive ($40)</option>
             </select>
-
-            <label>Full Name</label>
-            <input type="text" name="name" placeholder="As per PayNow" required>
-
-            <label>Email Address</label>
-            <input type="email" name="email" placeholder="Where to send your reading" required>
-
-            <label>Your Question</label>
-            <textarea name="question" rows="5" placeholder="What are you seeking guidance on?" required></textarea>
-
-            <button type="submit" class="submit-btn">Send My Request</button>
+            <input type="text" name="name" placeholder="Full Name (for reading)" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <textarea name="question" rows="4" placeholder="Enter your question here..." required></textarea>
+            <button type="submit" class="btn">Submit My Request</button>
         </form>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Divine Blessings Singapore</p>
-        <p>Instagram: @divineblessings222</p>
+        <p>&copy; 2026 Divine Blessings Singapore | Instagram: @divineblessings222</p>
     </footer>
-
-</body>
-</html>
