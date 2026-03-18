@@ -14,16 +14,19 @@
             --white: #ffffff;
         }
 
+        * { box-sizing: border-box; }
+
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0; padding: 0;
             background-color: var(--soft-cream);
             color: var(--text-gray);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         header {
-            padding: 30px 10%;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -34,7 +37,7 @@
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             letter-spacing: 2px;
             color: var(--deep-teal);
             text-transform: uppercase;
@@ -43,61 +46,278 @@
         }
 
         .hero {
-            padding: 120px 10%;
+            padding: 100px 10%;
             text-align: center;
             background: radial-gradient(circle, #ffffff 0%, #fdfaf5 100%);
         }
 
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.2rem, 5vw, 4rem);
             color: var(--deep-teal);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-style: italic;
         }
 
         .hero p {
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--primary-gold);
-            margin-bottom: 40px;
+            font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--primary-gold); margin-bottom: 30px;
         }
 
         .cta-btn {
             background: var(--primary-gold);
-            color: white;
-            border: none;
-            padding: 18px 45px;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.4s;
-            font-weight: 600;
+            color: white; border: none; padding: 15px 35px; font-size: 0.7rem; letter-spacing: 2px;
+            text-transform: uppercase; cursor: pointer; transition: 0.4s; font-weight: 600;
         }
 
-        .cta-btn:hover {
-            background: var(--deep-teal);
-            transform: translateY(-2px);
-        }
+        .cta-btn:hover { background: var(--deep-teal); transform: translateY(-2px); }
 
-        .services-section { padding: 100px 10%; background: #fff; text-align: center;}
+        /* Services Grid */
+        .services-section { padding: 80px 10%; background: #fff; text-align: center;}
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
         
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+        .service-card { 
+            background: var(--soft-cream); padding: 40px 20px; border: 1px solid #f0e6d2; 
+            transition: 0.3s;
         }
-
-        .service-card {
-            background: var(--soft-cream);
-            padding: 50px 30px;
-            border: 1px solid #f0e6d2;
-            transition: 0.4s;
-        }
-
+        
         .service-card:hover { border-color: var(--primary-gold); }
 
-        .
+        .service-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid var(--primary-gold); margin-bottom: 20px;}
+        .price-tag { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--deep-teal); display: block; margin-bottom: 10px; }
+
+        /* Booking & Payment Form */
+        #booking-form {
+            display: none; padding: 60px 5%; background: #fff; max-width: 700px; margin: 40px auto; 
+            border: 1px solid var(--primary-gold);
+        }
+
+        .payment-methods {
+            background: var(--soft-cream); padding: 20px; margin-bottom: 30px; text-align: center; border-radius: 4px;
+        }
+
+        .pay-box { margin: 15px 0; }
+        .pay-title { font-weight: 700; font-size: 0.75rem; color: var(--deep-teal); text-transform: uppercase; margin-bottom: 5px; display: block;}
+
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; font-size: 0.75rem; margin-bottom: 5px; color: var(--primary-gold); font-weight: 600;}
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; font-family: 'Montserrat'; }
+
+        /* Oracle Card Area */
+        .oracle-container { padding: 80px 5%; text-align: center; background: #fff; }
+        .spread { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 40px 0; }
+        
+        .card-slot { 
+            width: 150px; min-height: 260px; background: #fff; border: 1px solid #f2f2f2; 
+            padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        
+        .card-slot img { width: 100%; display: none; border-radius: 4px; }
+        .slot-label { font-size: 0.6rem; letter-spacing: 2px; color: var(--primary-gold); margin-bottom: 8px; font-weight: 600;}
+        .card-name { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--deep-teal); margin-top: 8px;}
+
+        footer { background: var(--deep-teal); color: #c4b6b6; padding: 40px 10%; text-align: center; font-size: 0.8rem; }
+
+        @media (max-width: 600px) {
+            .card-slot { width: 45%; }
+            .hero { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Divine Blessings</a>
+        <button class="cta-btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Book</button>
+    </header>
+
+    <section class="hero">
+        <p>A Sacred Space for Intuitive Wisdom</p>
+        <h1>Step into the light of <br>your true path.</h1>
+        <button class="cta-btn" onclick="document.getElementById('oracle').scrollIntoView({behavior:'smooth'})">Free Daily Card</button>
+    </section>
+
+    <section class="services-section" id="services">
+        <h2 style="font-family:'Cormorant Garamond'; font-size: 2.5rem; color: var(--deep-teal);">Private Readings</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1572916138174-0f2f0120529e?q=80&w=600">
+                <span class="price-tag">SGD 18</span>
+                <h3>The Quick Mini Reading</h3>
+                <p>Focused guidance for a single question.</p>
+                <button class="cta-btn" style="width:100%" onclick="showForm('Quick Mini Reading (SGD 18)')">Select Reading</button>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1515023115689-589c3942068f?q=80&w=600">
+                <span class="price-tag">SGD 40</span>
+                <h3>Personalized Deep Dive</h3>
+                <p>Full spread for deep life clarity.</p>
+                <button class="cta-btn" style="width:100%" onclick="showForm('Personalized Deep Dive (SGD 40)')">Select Reading</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING & PAYMENT -->
+    <section id="booking-form">
+        <h2 style="font-family:'Cormorant Garamond'; color: var(--deep-teal); text-align: center;">Complete Your Request</h2>
+        
+        <div class="payment-methods">
+            <div class="pay-box">
+                <span class="pay-title">Pay via PayNow (Singapore)</span>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--deep-teal); margin: 5px 0;">82575721</p>
+                <p style="font-size: 0.7rem; color: #888;">Kindly include your name in the reference.</p>
+            </div>
+            <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+            <div class="pay-box">
+                <span class="pay-title">Pay via Card / PayPal</span>
+                <button class="cta-btn" style="padding: 10px 20px; font-size: 0.6rem;" onclick="window.open('https://paypal.me/YOUR_USER_NAME', '_blank')">Open PayPal Link</button>
+            </div>
+        </div>
+
+        <p id="selected-service" style="color: var(--primary-gold); font-weight: bold; text-align: center; margin-bottom: 20px;"></p>
+        
+        <form action="https://formsubmit.co/vinti2932@gmail.com" method="POST">
+            <input type="hidden" name="Reading Type" id="form-service-input">
+            
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>Your Email</label>
+                <input type="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label>PayNow Reference / Payment Status</label>
+                <input type="text" name="payment_ref" placeholder="e.g. Paid via PayNow">
+            </div>
+            <div class="form-group">
+                <label>Your Question</label>
+                <textarea name="message" rows="4" required placeholder="What are you seeking guidance on?"></textarea>
+            </div>
+            <button type="submit" class="cta-btn" style="width: 100%;">Submit & Send Request</button>
+        </form>
+    </section>
+
+    <section class="oracle-container" id="oracle">
+        <h2 style="font-family:'Cormorant Garamond'; font-size: 2.5rem; color: var(--deep-teal);">The Spirit Spread</h2>
+        <div class="spread">
+            <div class="card-slot" id="slot-0"><div class="slot-label">PRESENT</div><img src=""><div class="card-name"></div></div>
+            <div class="card-slot" id="slot-1"><div class="slot-label">OBSTACLE</div><img src=""><div class="card-name"></div></div>
+            <div class="card-slot" id="slot-2"><div class="slot-label">PAST</div><img src=""><div class="card-name"></div></div>
+            <div class="card-slot" id="slot-3"><div class="slot-label">FUTURE</div><img src=""><div class="card-name"></div></div>
+            <div class="card-slot" id="slot-4"><div class="slot-label">OUTCOME</div><img src=""><div class="card-name"></div></div>
+        </div>
+        <button class="cta-btn" onclick="drawFive()">Draw 5 Cards</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Divine Blessings | Spiritual Wisdom in Singapore</p>
+    </footer>
+
+    <script>
+        function showForm(serviceName) {
+            document.getElementById('booking-form').style.display = 'block';
+            document.getElementById('selected-service').innerText = "Selected: " + serviceName;
+            document.getElementById('form-service-input').value = serviceName;
+            document.getElementById('booking-form').scrollIntoView({behavior: 'smooth'});
+        }
+
+        const deck = [
+            { name: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg" },
+            { name: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg" },
+            { name: "The High Priestess", img: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg" },
+            { name: "The Empress", img: "https://upload.wikimedia.org/wikipedia/commons/d/d1/RWS_Tarot_03_Empress.jpg" },
+            { name: "The Emperor", img: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg" },
+            { name: "The Hierophant", img: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg" },
+            { name: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg" },
+            { name: "The Chariot", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg" },
+            { name: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg" },
+            { name: "The Hermit", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg" },
+            { name: "Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg" },
+            { name: "Justice", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg" },
+            { name: "The Hanged Man", img: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg" },
+            { name: "Death", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg" },
+            { name: "Temperance", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg" },
+            { name: "The Devil", img: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg" },
+            { name: "The Tower", img: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg" },
+            { name: "The Star", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg" },
+            { name: "The Moon", img: "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg" },
+            { name: "The Sun", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg" },
+            { name: "Judgement", img: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg" },
+            { name: "The World", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg" },
+            { name: "Ace of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg" },
+            { name: "Two of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Wands02.jpg" },
+            { name: "Three of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Wands03.jpg" },
+            { name: "Four of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Wands04.jpg" },
+            { name: "Five of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Wands05.jpg" },
+            { name: "Six of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Wands06.jpg" },
+            { name: "Seven of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Wands07.jpg" },
+            { name: "Eight of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Wands08.jpg" },
+            { name: "Nine of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Wands09.jpg" },
+            { name: "Ten of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Wands10.jpg" },
+            { name: "Page of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Wands11.jpg" },
+            { name: "Knight of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/1/16/Wands12.jpg" },
+            { name: "Queen of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Wands13.jpg" },
+            { name: "King of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Wands14.jpg" },
+            { name: "Ace of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg" },
+            { name: "Two of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Cups02.jpg" },
+            { name: "Three of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Cups03.jpg" },
+            { name: "Four of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Cups04.jpg" },
+            { name: "Five of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Cups05.jpg" },
+            { name: "Six of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/Cups06.jpg" },
+            { name: "Seven of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Cups07.jpg" },
+            { name: "Eight of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/a/af/Cups08.jpg" },
+            { name: "Nine of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/2/24/Cups09.jpg" },
+            { name: "Ten of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/8/84/Cups10.jpg" },
+            { name: "Page of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cups11.jpg" },
+            { name: "Knight of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Cups12.jpg" },
+            { name: "Queen of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/6/62/Cups13.jpg" },
+            { name: "King of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/0/04/Cups14.jpg" },
+            { name: "Ace of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg" },
+            { name: "Two of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Swords02.jpg" },
+            { name: "Three of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/0/02/Swords03.jpg" },
+            { name: "Four of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Swords04.jpg" },
+            { name: "Five of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/2/23/Swords05.jpg" },
+            { name: "Six of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/2/29/Swords06.jpg" },
+            { name: "Seven of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/3/34/Swords07.jpg" },
+            { name: "Eight of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Swords08.jpg" },
+            { name: "Nine of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Swords09.jpg" },
+            { name: "Ten of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords10.jpg" },
+            { name: "Page of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Swords11.jpg" },
+            { name: "Knight of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Swords12.jpg" },
+            { name: "Queen of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords13.jpg" },
+            { name: "King of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Swords14.jpg" },
+            { name: "Ace of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Pents01.jpg" },
+            { name: "Two of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Pents02.jpg" },
+            { name: "Three of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/4/42/Pents03.jpg" },
+            { name: "Four of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Pents04.jpg" },
+            { name: "Five of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/9/96/Pents05.jpg" },
+            { name: "Six of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Pents06.jpg" },
+            { name: "Seven of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Pents07.jpg" },
+            { name: "Eight of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/4/49/Pents08.jpg" },
+            { name: "Nine of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Pents09.jpg" },
+            { name: "Ten of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/4/42/Pents10.jpg" },
+            { name: "Page of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Pents11.jpg" },
+            { name: "Knight of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Pents12.jpg" },
+            { name: "Queen of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/8/88/Pents13.jpg" },
+            { name: "King of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Pents14.jpg" }
+        ];
+
+        function drawFive() {
+            let tempDeck = [...deck];
+            for (let i = 0; i < 5; i++) {
+                const randomIndex = Math.floor(Math.random() * tempDeck.length);
+                const card = tempDeck.splice(randomIndex, 1)[0];
+                const slot = document.getElementById(`slot-${i}`);
+                const img = slot.querySelector('img');
+                img.style.display = "none";
+                setTimeout(() => {
+                    img.src = card.img;
+                    img.style.display = "block";
+                    slot.querySelector('.card-name').innerText = card.name;
+                }, i * 150);
+            }
+        }
+    </script>
+</body>
+</html>
