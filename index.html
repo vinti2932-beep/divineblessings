@@ -6,58 +6,30 @@
     <title>Divine Blessings | Singapore</title>
     <style>
         :root { --gold: #c5a059; --teal: #1a3a3a; --cream: #fdfaf5; }
-        body { font-family: 'Georgia', serif; margin: 0; padding: 0; background-color: var(--cream); color: var(--teal); text-align: center; }
-        header { background: var(--teal); color: var(--gold); padding: 30px; border-bottom: 4px solid var(--gold); }
-        .logo { font-size: 28px; letter-spacing: 3px; text-transform: uppercase; font-weight: bold; }
+        body { font-family: 'Palatino', 'Georgia', serif; margin: 0; background-color: var(--cream); color: var(--teal); text-align: center; line-height: 1.6; }
+        header { background: var(--teal); color: var(--gold); padding: 40px 20px; border-bottom: 5px solid var(--gold); }
+        .logo { font-size: 30px; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; }
+        
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        h2 { font-style: italic; margin-top: 40px; border-bottom: 1px solid var(--gold); display: inline-block; }
-        .oracle-box { background: white; padding: 30px; border-radius: 15px; border: 1px solid #ddd; margin: 20px 0; }
-        .spread { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
-        .card-slot { width: 130px; min-height: 220px; background: #eee; border-radius: 8px; padding: 5px; border: 1px solid #ccc; }
-        .card-slot img { width: 100%; display: none; border-radius: 5px; animation: fadeIn 0.8s; }
-        .card-name { font-size: 11px; font-weight: bold; margin-top: 5px; min-height: 30px; line-height: 1.2; }
-        .pos-label { font-size: 10px; color: var(--gold); text-transform: uppercase; margin-bottom: 5px; }
-        .btn { background: var(--teal); color: var(--gold); padding: 15px 30px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 16px; margin-top: 10px; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    </style>
-</head>
-<body>
+        h2 { font-style: italic; margin-top: 50px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
 
-    <header><div class="logo">Divine Blessings</div></header>
+        /* ORACLE PULL SECTION */
+        .oracle-box { background: white; padding: 30px; border-radius: 15px; border: 1px solid #ddd; margin: 30px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .spread { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 25px 0; }
+        .card-slot { width: 140px; min-height: 280px; background: #fdfdfd; border-radius: 10px; padding: 8px; border: 1px solid #eee; display: flex; flex-direction: column; align-items: center; }
+        .card-slot img { width: 100%; display: none; border-radius: 6px; border: 1px solid var(--gold); animation: fadeIn 0.8s; }
+        .card-name { font-size: 13px; font-weight: bold; margin-top: 10px; color: var(--teal); min-height: 20px; }
+        .card-msg { font-size: 11px; font-style: italic; color: #777; margin-top: 5px; line-height: 1.3; display: none; }
+        .pos-label { font-size: 10px; color: var(--gold); text-transform: uppercase; font-weight: bold; margin-bottom: 8px; }
 
-    <div class="container">
-        <section id="free-reading">
-            <h2>Full 78-Card Spirit Spread</h2>
-            <p>Focus on your energy. This deck now contains all Major and Minor Arcana.</p>
-            <div class="oracle-box">
-                <div class="spread">
-                    <div class="card-slot" id="s0"><div class="pos-label">Present</div><img><div class="card-name"></div></div>
-                    <div class="card-slot" id="s1"><div class="pos-label">Obstacle</div><img><div class="card-name"></div></div>
-                    <div class="card-slot" id="s2"><div class="pos-label">Past</div><img><div class="card-name"></div></div>
-                    <div class="card-slot" id="s3"><div class="pos-label">Future</div><img><div class="card-name"></div></div>
-                    <div class="card-slot" id="s4"><div class="pos-label">Outcome</div><img><div class="card-name"></div></div>
-                </div>
-                <button class="btn" style="width: auto;" onclick="drawFive()">Draw 5 Cards</button>
-            </div>
-        </section>
-    </div>
-
-    <script>
-        // 1. Major Arcana (0-21)
-        const majorArcana = [
-            {n:"The Fool", i:"https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg"},
-            {n:"The Magician", i:"https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg"},
-            {n:"The High Priestess", i:"https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg"},
-            {n:"The Empress", i:"https://upload.wikimedia.org/wikipedia/commons/a/af/RWS_Tarot_03_Empress.jpg"},
-            {n:"The Emperor", i:"https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg"},
-            {n:"The Hierophant", i:"https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg"},
-            {n:"The Lovers", i:"https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg"},
-            {n:"The Chariot", i:"https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg"},
-            {n:"Strength", i:"https://upload.wikimedia.org/wikipedia/commons/f/f0/RWS_Tarot_08_Strength.jpg"},
-            {n:"The Hermit", i:"https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg"},
-            {n:"Wheel of Fortune", i:"https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg"},
-            {n:"Justice", i:"https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg"},
-            {n:"The Hanged Man", i:"https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg"},
-            {n:"Death", i:"https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg"},
-            {n:"Temperance", i:"https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg"},
-            {n:"The Devil", i:"
+        /* PRIVATE READING OPTIONS (MINI & FULL) */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 30px; }
+        .service-card { background: white; border: 2px solid var(--gold); padding: 30px; border-radius: 15px; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .price { font-size: 32px; font-weight: bold; color: var(--teal); margin: 15px 0; }
+        
+        /* PAYMENT & FORM */
+        .paynow-box { background: #fff1f1; border: 3px dashed #7b1113; padding: 30px; border-radius: 12px; margin: 50px 0; }
+        .number { font-size: 38px; font-weight: bold; color: #7b1113; display: block; margin: 15px 0; letter-spacing: 2px; }
+        
+        form { background: white; padding: 40px; border-radius
