@@ -1,139 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Divine Blessings | Sacred Oracle Guidance</title>
-<style>
-:root { --gold: #c5a059; --teal: #1a3a3a; --cream: #fdfaf5; --white: #ffffff; }
-body { font-family: 'Palatino', 'Georgia', serif; margin: 0; background: var(--cream); color: var(--teal); text-align: center; line-height: 1.6; }
-header { background: var(--teal); color: var(--gold); padding: 60px 20px; border-bottom: 5px solid var(--gold); }
-.logo { font-size: 32px; letter-spacing: 5px; text-transform: uppercase; font-weight: bold; margin: 0; }
-.tagline { color: var(--white); font-size: 12px; letter-spacing: 3px; margin-top: 10px; opacity: 0.8; }
-.container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-/* ORACLE SPREAD */
-.oracle-box { background: var(--white); padding: 40px 20px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 50px; }
-.spread { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 30px 0; }
-.card-slot { width: 160px; min-height: 350px; background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 10px; }
-.card-slot img { width: 100%; border-radius: 8px; display: none; border: 1px solid var(--gold); animation: fadeIn 1s forwards; }
-.card-name { font-size: 14px; font-weight: bold; margin-top: 12px; color: var(--teal); }
-.card-msg { font-size: 11px; font-style: italic; color: #666; margin-top: 5px; display: none; min-height: 40px; }
-.pos-label { font-size: 10px; color: var(--gold); text-transform: uppercase; font-weight: bold; margin-bottom: 10px; display: block; }
-/* PRICING & SERVICES */
-.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 40px 0; }
-.s-card { background: white; border: 2px solid var(--gold); padding: 30px; border-radius: 15px; }
-.price { font-size: 32px; font-weight: bold; margin: 15px 0; color: var(--teal); }
-/* PAYNOW & FORM */
-.paynow { background: #fff1f1; border: 2px dashed #b12a2a; padding: 30px; border-radius: 15px; margin: 40px 0; }
-.num { font-size: 38px; font-weight: bold; color: #b12a2a; display: block; margin: 10px 0; }
-form { background: white; padding: 30px; border-radius: 15px; text-align: left; border: 1px solid #eee; }
-input, textarea, select { width: 100%; padding: 12px; margin-top: 8px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
-.btn { background: var(--teal); color: var(--gold); padding: 18px 30px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 16px; margin-top: 20px; transition: 0.3s; text-decoration: none; display: inline-block; }
-.btn:hover { background: var(--gold); color: white; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Blessings | Sacred Oracle Guidance</title>
+    <style>
+        :root { --gold: #c5a059; --teal: #1a3a3a; --cream: #fdfaf5; --white: #ffffff; }
+        body { font-family: 'Palatino', 'Georgia', serif; margin: 0; background: var(--cream); color: var(--teal); text-align: center; line-height: 1.6; }
+        header { background: var(--teal); color: var(--gold); padding: 50px 20px; border-bottom: 5px solid var(--gold); }
+        .logo { font-size: 32px; letter-spacing: 5px; text-transform: uppercase; font-weight: bold; margin: 0; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        .oracle-box { background: var(--white); padding: 40px 10px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 50px; }
+        .spread { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 30px 0; min-height: 400px; }
+        .card-slot { width: 160px; min-height: 380px; background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 10px; }
+        .card-slot img { width: 100%; border-radius: 8px; display: none; border: 1px solid var(--gold); animation: fadeIn 1s forwards; }
+        .card-name { font-size: 14px; font-weight: bold; margin-top: 12px; color: var(--teal); }
+        .card-msg { font-size: 11px; font-style: italic; color: #666; margin-top: 5px; display: none; }
+        .pos-label { font-size: 10px; color: var(--gold); text-transform: uppercase; font-weight: bold; margin-bottom: 10px; display: block; }
+
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 40px 0; }
+        .s-card { background: white; border: 2px solid var(--gold); padding: 30px; border-radius: 15px; }
+        .price { font-size: 32px; font-weight: bold; margin: 15px 0; color: var(--teal); }
+        
+        .paynow { background: #fff1f1; border: 2px dashed #b12a2a; padding: 30px; border-radius: 15px; margin: 40px 0; }
+        .num { font-size: 38px; font-weight: bold; color: #b12a2a; display: block; margin: 10px 0; }
+        form { background: white; padding: 30px; border-radius: 15px; text-align: left; border: 1px solid #eee; }
+        input, textarea, select { width: 100%; padding: 12px; margin-top: 8px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        
+        .btn { background: var(--teal); color: var(--gold); padding: 18px 30px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 16px; margin-top: 20px; text-decoration: none; display: inline-block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
 </head>
 <body>
 
 <header>
     <div class="logo">Divine Blessings</div>
-    <div class="tagline">SINGAPORE'S SACRED SPACE FOR CLARITY</div>
+    <div style="color:white; font-size: 12px; letter-spacing: 2px;">INTUITIVE ORACLE GUIDANCE</div>
 </header>
 
 <div class="container">
     <section>
-        <h2>Complimentary 5-Card Spread</h2>
-        <p>Focus on your question, then reveal the messages from the universe.</p>
+        <h2>Reveal My Destiny</h2>
         <div class="oracle-box">
             <div class="spread">
                 <div class="card-slot" id="s0"><span class="pos-label">Present</span><img><div class="card-name"></div><div class="card-msg"></div></div>
                 <div class="card-slot" id="s1"><span class="pos-label">Challenge</span><img><div class="card-name"></div><div class="card-msg"></div></div>
                 <div class="card-slot" id="s2"><span class="pos-label">Root</span><img><div class="card-name"></div><div class="card-msg"></div></div>
-                <div class="card-slot" id="s3"><span class="pos-label">Advice</span><img><div class="card-name"></div><div class="card-msg"></div></div>
+                <div class="card-slot" id="s3"><span class="pos-label">Future</span><img><div class="card-name"></div><div class="card-msg"></div></div>
                 <div class="card-slot" id="s4"><span class="pos-label">Outcome</span><img><div class="card-name"></div><div class="card-msg"></div></div>
             </div>
-            <button class="btn" style="width: auto;" onclick="draw()">Reveal My Destiny</button>
+            <button class="btn" onclick="draw()">Shuffle & Reveal Cards</button>
         </div>
     </section>
 
     <div class="services">
-        <div class="s-card"><h3>Mini Email Reading</h3><div class="price">SGD 18</div><p>15-minute focused guidance on one specific question.</p><a href="#booking" class="btn">Select Mini</a></div>
-        <div class="s-card"><h3>Personalized Deep Dive</h3><div class="price">SGD 40</div><p>Comprehensive 7-card soul analysis & PDF report.</p><a href="#booking" class="btn">Select Full</a></div>
-    </div>
-
-    <div class="paynow">
-        <strong>STEP 1: PAYNOW TO</strong>
-        <span class="num">82575721</span>
-        <p>Reference: Your Full Name</p>
-    </div>
-
-    <form id="booking" action="https://formsubmit.co/vinti2932@gmail.com" method="POST">
-        <h3>STEP 2: CONFIRM YOUR READING</h3>
-        <label>Reading Choice</label>
-        <select name="Service"><option>Mini Reading ($18)</option><option>Deep Dive ($40)</option></select>
-        <input type="text" name="name" placeholder="Your Full Name" required>
-        <input type="email" name="email" placeholder="Email Address" required>
-        <textarea name="question" rows="4" placeholder="What is your intention or question for this reading?"></textarea>
-        <button type="submit" class="btn">Send Booking Request</button>
-    </form>
-</div>
-
-<script>
-// Complete 78-card deck with working image URLs (Rider-Waite)
-const deck = [
-  // Major Arcana (22)
-  {n:"The Fool", m:"New beginnings, innocence, spontaneity", i:"https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg"},
-  {n:"The Magician", m:"Manifestation, resourcefulness", i:"https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg"},
-  {n:"The High Priestess", m:"Intuition, mystery", i:"https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg"},
-  {n:"The Empress", m:"Fertility, nurturing, abundance", i:"https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_03_Empress.jpg"},
-  {n:"The Emperor", m:"Structure, authority, stability", i:"https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_04_Emperor.jpg"},
-  {n:"The Hierophant", m:"Tradition, spiritual guidance", i:"https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_05_Hierophant.jpg"},
-  {n:"The Lovers", m:"Love, partnership, choice", i:"https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_06_Lovers.jpg"},
-  {n:"The Chariot", m:"Control, willpower, determination", i:"https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_07_Chariot.jpg"},
-  {n:"Strength", m:"Courage, inner strength, patience", i:"https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_08_Strength.jpg"},
-  {n:"The Hermit", m:"Introspection, solitude, guidance", i:"https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_09_Hermit.jpg"},
-  {n:"Wheel of Fortune", m:"Cycles, destiny, luck", i:"https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_10_Wheel_of_Fortune.jpg"},
-  {n:"Justice", m:"Fairness, truth, law", i:"https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_11_Justice.jpg"},
-  {n:"The Hanged Man", m:"Letting go, new perspective", i:"https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_12_Hanged_Man.jpg"},
-  {n:"Death", m:"Transformation, endings, rebirth", i:"https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_13_Death.jpg"},
-  {n:"Temperance", m:"Balance, moderation, harmony", i:"https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_14_Temperance.jpg"},
-  {n:"The Devil", m:"Addiction, materialism, shadow self", i:"https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_15_Devil.jpg"},
-  {n:"The Tower", m:"Sudden change, upheaval", i:"https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_16_Tower.jpg"},
-  {n:"The Star", m:"Hope, inspiration, serenity", i:"https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_17_Star.jpg"},
-  {n:"The Moon", m:"Illusion, intuition, fear", i:"https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_18_Moon.jpg"},
-  {n:"The Sun", m:"Joy, success, positivity", i:"https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_19_Sun.jpg"},
-  {n:"Judgement", m:"Reflection, reckoning, awakening", i:"https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_20_Judgement.jpg"},
-  {n:"The World", m:"Completion, fulfillment, celebration", i:"https://upload.wikimedia.org/wikipedia/commons/2/2f/RWS_Tarot_21_World.jpg"}
-];
-
-// Minor Arcana
-const suits = ['Wands','Cups','Swords','Pentacles'];
-const court = ['Page','Knight','Queen','King'];
-
-suits.forEach(suit=>{
-  for(let i=1;i<=10;i++){
-    let val = i===1?'Ace':i;
-    deck.push({n:`${val} of ${suit}`, m:`Energy of ${suit} influencing your daily path.`, i:`https://upload.wikimedia.org/wikipedia/commons/4/45/RWS_Tarot_${val}_${suit}.jpg`});
-  }
-  court.forEach(c=>{
-    deck.push({n:`${c} of ${suit}`, m:`A person or personality trait affecting your situation.`, i:`https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_${c}_${suit}.jpg`});
-  });
-});
-
-// Draw 5 cards
-function draw() {
-    let shuffled = [...deck].sort(() => 0.5 - Math.random());
-    for(let i=0;i<5;i++){
-        let card = shuffled[i];
-        let slot = document.getElementById('s'+i);
-        let img = slot.querySelector('img');
-        img.src = card.i; img.style.display="block";
-        slot.querySelector('.card-name').innerText = card.n;
-        let msg = slot.querySelector('.card-msg');
-        msg.innerText = card.m; msg.style.display="block";
-    }
-}
-</script>
-
-</body>
-</html>
+        <div class="s-card"><h3>Mini Reading</h3><div class="price">SGD 18</div><a href="#booking" class="btn">Book Now
